@@ -2,31 +2,71 @@
 
 namespace App\Model;
 
-use App\Core\App;
 use App\Core\Model;
 
 class Auth extends Model
 {
-    public function __construct()
+    /** @return self */
+    public static function i($data = null)
     {
-        parent::__construct();
+        return parent::i($data);
     }
 
     public function login()
     {
-        $email =
+        $this->checkReqParams(['email', 'password']);
+
+        $params = $this->toArray($this->params);
+        $email = $params['email'] ?? '';
+        $password = $params['password'] ?? '';
+
         $query = '
             SELECT id
             FROM workers
-            WHERE email = "'.$this->quote($email).'"
+            WHERE email = '.$this->quote($email).'
+            AND password = '.$this->quote($password).'
         ';
         $res = mysqli_query($this->db, $query);
-        $row = mysqli_fetch_assoc($res);
-        return $row;
+        $worker = $res ? mysqli_fetch_assoc($res) : [];
+
+        if (empty($worker['id'])) {
+            $this->app->sendError(200, 'Auth error');
+        }
+
+        $hash = hash('md5', $worker['id'].' '.$email.' '.$password);
+        if (empty($hash)) {
+            $this->app->sendError(200, 'Auth error');
+        }
+
+        $query = '
+            UPDATE workers
+            SET hash = '.$this->quote($hash).'
+            WHERE id = '.intval($worker['id']).'
+        ';
+        mysqli_query($this->db, $query);
+
+        return $hash;
     }
 
-    public function checkReqParams()
+    public function checkAuth()
     {
+        $this->checkReqParams(['token']);
 
+        $params = $this->toArray($this->params);
+        $token = $params['token'] ?? '';
+
+        $query = '
+            SELECT id
+            FROM workers
+            WHERE hash = '.$this->quote($token).'
+        ';
+        $res = mysqli_query($this->db, $query);
+        $worker = $res ? mysqli_fetch_assoc($res) : [];
+
+        if (empty($worker['id'])) {
+            $this->app->sendError(200, 'Auth error');
+        }
+
+        return true;
     }
 }

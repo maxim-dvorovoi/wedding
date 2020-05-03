@@ -6,7 +6,7 @@
                     <a href="https://ua.linkedin.com/in/maxim-dvorovoi" target="_blank">© 2020 Maxim Dvorovoi</a>
                 </div>
                 <div>
-                    <router-link to="/">SEO Admin</router-link>
+                    <router-link :to="app.routeName === 'login' ? '/login' : '/'">SEO Admin</router-link>
                 </div>
             </div>
         </div>

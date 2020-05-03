@@ -23,7 +23,7 @@
                     </div>
                     <div class="richsel-dd-items" ref="itemsBox">
                         <div
-                            v-for="(item, index) in filteredItems" v-if="item"
+                            v-for="(item, index) in filteredItems"
                             :class="['richsel-dd-item', {'richsel-hilited': (index === hiliteIndex)}]"
                             :ref="'item' + item.key"
                             :title="item.title"
@@ -36,17 +36,16 @@
                                 <div v-else>{{ item.val || '&nbsp;' }}</div>
                             </slot>
                         </div>
-                        <div v-else class="richsel-dd-sep"></div>
                     </div>
                     <div v-if="isRemote && !searchVal && selectVal" class="richsel-bottom">
-                        <span class="pic-link" @click="clear">
-                            <i class="fa fa-remove"></i>
+                        <span class="link" @click="clear">
+                            <i class="fas fa-times"></i>
                             <span>Clear</span>
                         </span>
                     </div>
                     <em v-if="noData" class="richsel-alter-items no-data-item">No data</em>
                     <div v-if="dataLoading" class="richsel-alter-items loding-item">
-                        <i class="fa fa-spinner spin-fast"></i>
+                        <i class="fas fa-spinner fast-spin"></i>
                         Loading...
                     </div>
                 </div>
@@ -56,6 +55,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         name: "RichSel",
         data() {
@@ -89,6 +90,8 @@
                     }
                     return {maxWidth};
                 }
+
+                return '';
             },
             isRemote() {
                 return !this.items && this.itemsUrl;
@@ -287,24 +290,24 @@
                     this.noData = false;
                     this.dataLoading = true;
 
-                    let req = '';
-                    if (this.itemsUrl.indexOf('?') >= 0) req = '&q=';
-                    else req = '?q=';
+                    let req = this.itemsUrl.indexOf('?') >= 0 ? '&q=' : '?q=';
 
-                    axios.get(this.itemsUrl + req + this.searchVal, {
+                    axios.get(this.apiUrl + this.itemsUrl + req + this.searchVal + '&token=' + this.token, {
                         cancelToken: this.source.token
                     })
                         .then(data => {
                             if (!data) return;
-                            if (!data.data.items) {
+                            if (!data.data.res || !data.data.res.items) {
                                 this.noData = true;
                             } else {
-                                let items = data.data.items.slice(0, this.maxItems || 10);
+                                let items = data.data.res.items.slice(0, this.maxItems || 10);
                                 if (this.customHandler) {
                                     items = items.map(this.customHandler);
                                 }
+
                                 this.resItems = items;
                             }
+
                             this.dataLoading = false;
                         })
                         .catch(err => {
@@ -384,6 +387,7 @@
         border: 1px solid #b8b8b8;
         border-radius: 5px;
         box-sizing: border-box;
+        overflow: hidden;
         z-index: 10;
     }
 
@@ -436,6 +440,10 @@
 
     .richsel-bottom {
         padding: 1px 7px 4px 5px;
+    }
+
+    .richsel-bottom .link i {
+        margin-right: 4px;
     }
 
     .is-disabled {

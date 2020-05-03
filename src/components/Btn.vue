@@ -9,7 +9,7 @@
 			<slot name="icon"></slot>
 			<i v-if="icon" class="fa fa-fw" :class="'fa-' + icon"></i>
 		</span>
-		<span><i v-if="loading" class="fa fa-fw fa-spinner spin-fast"></i></span>
+		<span><i v-if="loading" class="fas fa-fw fa-spinner fast-spin"></i></span>
 		<slot></slot>
 		<div class="btn-drop-layer"></div>
 	</button>
@@ -67,7 +67,7 @@
 
 	.btn:hover:not(.btn-disabled) {
 		transform: translateY(-1px);
-		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+		box-shadow: 0 3px 4px 0 rgba(0,0,0,0.3);
 	}
 
 	.btn.btn-hidden {

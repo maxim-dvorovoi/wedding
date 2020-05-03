@@ -2,20 +2,29 @@
 
 namespace App\Core;
 
+use App\E\AppException;
 use App\E\HttpException;
 use AltoRouter;
 
-class App extends Singleton
+class App
 {
+    private static $instance = null;
 	private $config;
 	private $data;
 	public $db;
 
-	/** @return self */
-	public static function i($data = null)
+	public static function i()
 	{
-		return parent::i($data);
+		if (!self::$instance) {
+		    self::$instance = new self();
+        }
+		return self::$instance;
 	}
+
+	public static function getInstance()
+    {
+        return self::i();
+    }
 
 	public function __construct()
 	{
@@ -60,13 +69,13 @@ class App extends Singleton
         $fullClassName = '\\App\\Model\\'.$className;
 
         if (!class_exists($fullClassName)) {
-            throw new \Error('Error: class dont exist;', 503);
+            throw new HttpException(503, 'Class not found');
         }
 
         $instance = new $fullClassName();
 
         if (!method_exists($instance, $methodName)) {
-            throw new \Error('Error: method dont exist', 503);
+            throw new HttpException(503, 'Method not found');
         }
 
         $this->data = $instance->{$methodName}();
@@ -82,7 +91,7 @@ class App extends Singleton
         ];
         header('Content-Type: application/json; charset=UTF-8');
 
-        echo json_encode($res);
+        exit(json_encode($res));
     }
 
     public function sendError($code = 500, $msg = 'Server error')
@@ -95,6 +104,6 @@ class App extends Singleton
         http_response_code($code);
         header('Content-Type: application/json; charset=UTF-8');
 
-        echo json_encode($res);
+        exit(json_encode($res));
     }
 }

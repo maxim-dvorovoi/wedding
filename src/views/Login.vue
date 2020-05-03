@@ -1,20 +1,22 @@
 <template>
-	<div class="login">
+	<div class="login" v-if="init">
 		<div class="content-center">
 			<div class="login-form">
 				<div>
 					<div class="general">Email:</div>
-					<input class="width100">
+					<input class="width100" v-model="email" @keyup.enter="login()" id="username">
 				</div>
 				<div>
 					<div class="general">Password:</div>
-					<input class="width100">
+					<input type="password" class="width100" v-model="password" @keyup.enter="login()" id="password">
 				</div>
 				<div class="text-center">
-					<btn>Login</btn>
+					<btn @click.native="login()">Login</btn>
 				</div>
 			</div>
-			<br>
+			<transition name="fade-down">
+				<h5 v-show="error" class="red text-center">Error: Invalid email or password</h5>
+			</transition>
 		</div>
 	</div>
 </template>
@@ -24,9 +26,31 @@
 	export default {
 		name: 'login',
 		components: {Btn},
-		methods: {
-
+		data() {
+			return {
+				init: false,
+				error: false,
+				email: null,
+				password: null
+			};
 		},
+		methods: {
+			async login() {
+				if (!this.email || !this.password) return this.error = true;
+
+				let data = await this.post('/auth/login', {email: this.email, password: this.password});
+				this.error = !data || data.err;
+				if (this.error) return;
+
+				this.setCookie('token', data.res, {path: '', expires: 365 * 3});
+				this.$router.push({name: "home"});
+			}
+		},
+		mounted() {
+			this.removeCookie('token', {path: ''});
+			this.setLoading(false);
+			this.init = true;
+		}
 	}
 </script>
 

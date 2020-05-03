@@ -28,24 +28,24 @@
                         <div v-if="withNot" class="multisel-invert-box">
                             <label class="nowrap chb">
                                 <input
-                                        type="checkbox"
-                                        :checked="inverted"
-                                        @click="setInverted(!inverted)"
+                                    type="checkbox"
+                                    :checked="inverted"
+                                    @click="setInverted(!inverted)"
                                 >
                                 <span>Not</span>
                             </label>
                         </div>
                         <div
-                                v-for="(item, index) in filteredItems"
-                                :key="item.key"
-                                :class="['multisel-dd-item', item.className]"
-                                :ref="'item' + item.key"
+                            v-for="(item, index) in filteredItems"
+                            :key="item.key"
+                            :class="['multisel-dd-item', item.className]"
+                            :ref="'item' + item.key"
                         >
                             <label class="nowrap chb">
                                 <input
-                                        type="checkbox"
-                                        :checked="!!checkedKeysMap[item.key]"
-                                        @click="check($event, item, index)"
+                                    type="checkbox"
+                                    :checked="!!checkedKeysMap[item.key]"
+                                    @click="check($event, item, index)"
                                 >
                                 <span v-if="item.html" v-html="item.html"></span>
                                 <span v-else>{{ item.val || '&nbsp;' }}</span>
@@ -290,6 +290,7 @@
         watch: {
             value() {
                 this.updateVal();
+                this.updateTfText();
             },
             items() {
                 this.updateVal();
@@ -384,6 +385,7 @@
         border: 1px solid #9a9a9a;
         border-radius: 5px;
         box-sizing: border-box;
+        overflow: hidden;
         z-index: 10;
     }
 

@@ -1,4 +1,53 @@
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
 let methods = {
+    setLoading(st) {
+        this.app.contentLoading = st;
+    },
+    async checkAuth() {
+        if (!this.token) {
+            await this.$router.push({name: "login"});
+            return false;
+        }
+
+        try {
+            let result = await this.get('/auth/check-auth');
+            if (result && result.err) {
+                await this.$router.push({name: "login"});
+                return false;
+            }
+
+            return !!result.res;
+        } catch (e) {
+            return false;
+        }
+    },
+    getCookie(key) {
+        return Cookies.get(key);
+    },
+    setCookie(key, value, params = {}) {
+        return Cookies.set(key, value, params);
+    },
+    removeCookie(key, params = {}) {
+        return Cookies.remove(key, params);
+    },
+    async get(endPoint, params = {}) {
+        let token = this.token || '';
+        params = {...params, token};
+        let res = await axios.get(this.apiUrl + endPoint, {params});
+        if (!res) return null;
+
+        return res.data;
+    },
+    async post(endPoint, params = {}) {
+        let token = this.token || '';
+        params = {...params, token};
+        let res = await axios.post(this.apiUrl + endPoint, params);
+        if (!res) return null;
+
+        return res.data;
+    },
     refreshQuery(opts = {}) {
         let query = this.app.query;
         for (let i in query) {
@@ -171,6 +220,9 @@ let methods = {
         }
         return str;
     },
+    scrollTop() {
+        return window.scrollY != null ? window.scrollY : window.pageYOffset;
+    }
 };
 
 export default methods;

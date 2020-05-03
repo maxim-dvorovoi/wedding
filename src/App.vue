@@ -7,10 +7,16 @@
 		</div>
 
 		<div id="index" :class="loading ? 'main' : 'main-active'">
-			<div class="side" :class="[{'active': $store.state.sideBar}]">
+			<div class="side" :class="[{'active': $store.state.sideBar}]" ref="side">
 				<Header/>
 				<div class="content" id="content">
-					<router-view/>
+					<transition name="fade">
+						<div class="content-loader" v-show="contentLoading">
+							<i class="fas fa-spinner fast-spin"></i>
+							Loading...
+						</div>
+					</transition>
+					<router-view ref="appView"/>
 				</div>
 				<Footer/>
 			</div>
@@ -19,8 +25,84 @@
 	</div>
 </template>
 
+<script>
+	import Header from './components/Header.vue'
+	import SideBar from './components/SideBar.vue'
+	import Footer from './components/Footer.vue'
+
+	export default {
+		components: {
+			Header,
+			SideBar,
+			Footer
+		},
+		data() {
+			return {
+				query: {},
+				params: {},
+				hash: null,
+				routeName: null,
+				loading: true,
+				contentLoading: false,
+				scrollBtnShown: false,
+				win: {
+					width: null,
+					height: null
+				},
+			};
+		},
+		methods: {
+			setPageLoading() {
+				setTimeout(() => this.loading = false, 700);
+			},
+			updateWinSize() {
+				this.win.width = this.getWinWidth();
+				this.win.height = this.getWinHeight();
+			},
+			initWin() {
+				this.updateWinSize();
+				window.addEventListener('resize', this.updateWinSize);
+			},
+			updateRouteParams() {
+				this.query = { ...this.$route.query };
+				this.params = { ...this.$route.params };
+				this.hash = this.$route.hash;
+				this.routeName = this.$route.name;
+			},
+			onPanelScroll() {
+				this.scrollBtnShown = this.scrollTop() > 100;
+
+				let OFFSET = 50;
+				let scrollBottom = this.scrollTop() + window.innerHeight;
+				let docHeight = this.$refs.side.scrollHeight || document.body.scrollHeight;
+
+				if (scrollBottom > docHeight - OFFSET) {
+					if (this.$refs.appView && this.$refs.appView.onScrollToBottom) {
+						this.$refs.appView.onScrollToBottom();
+					}
+				}
+			},
+		},
+		watch: {
+			$route() {
+				this.updateRouteParams();
+			}
+		},
+		async mounted() {
+			this.initWin();
+			this.updateRouteParams();
+
+			window.onload = this.setPageLoading;
+			window.addEventListener('scroll', this.onPanelScroll);
+		}
+	}
+</script>
+
 <style>
 	#app {
+		position: absolute;
+		top: 0;
+		width: 100%;
 		height: 100%;
 		background-color: white;
 	}
@@ -54,6 +136,7 @@
 	}
 
 	a {
+		color: #305a4e;
 		text-decoration: none;
 	}
 
@@ -131,6 +214,30 @@
 
 	.green {
 		color: #366356;
+	}
+
+	.blue {
+		color: #476fca;
+	}
+
+	.yellow {
+		color: #ffb822;
+	}
+
+	.grey {
+		color: dimgrey;
+	}
+
+	.red {
+		color: #db3f3f;
+	}
+
+	.pointer {
+		cursor: pointer;
+	}
+
+	.help{
+		cursor: help;
 	}
 
 	.clearfix:after {
@@ -285,12 +392,12 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(173px, 1fr));
 		grid-gap: 2vw;
-		margin: 0 auto;
+		margin: 25px auto;
 	}
 
 	.filters .filter {
 		position: relative;
-		font-size: 14px;
+		font-size: 15px;
 		height: 55px;
 	}
 
@@ -300,19 +407,20 @@
 
 	.filters .filter > .btn {
 		position: absolute;
-		bottom: 2px;
+		bottom: 0;
 	}
 
 	.tbl-outer {
 		width: 100%;
+		margin: 30px 0;
 	}
 
 	table.general-tbl {
 		width: 100%;
 		font-size: 14px;
-		border: 1px solid #dddddd;
 		box-shadow: 0 3px 5px -2px rgba(0,0,0,0.5);
 		border-collapse: collapse;
+		border: 1px solid #dddddd;
 		box-sizing: border-box;
 	}
 
@@ -333,6 +441,34 @@
 
 	table.hover-tbl tr:hover td {
 		background: #fafafa;
+	}
+
+	.content-loader {
+		position: absolute;
+		padding: 10px 20px;
+		left: 50%;
+		margin-left: -65px;
+		background: white;
+		z-index: 1000;
+		top: 120px;
+		box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.3);
+	}
+
+	.fast-spin {
+		animation-name: spin;
+		animation-duration: 700ms;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
 	.loader {
@@ -526,23 +662,16 @@
 	}
 
 	@media (max-width: 1024px) {
-		.main-active > .side.active {
-			transform: translateX(-250px);
-		}
-
-		table.general-tbl th {
-			top: 59px;
-		}
-	}
-
-	@media (max-width: 767px) {
 		.tbl-outer {
 			overflow-x: auto;
 		}
 
 		table.general-tbl th {
 			position: static;
-			top: 0;
+		}
+
+		.main-active > .side.active {
+			transform: translateX(-250px);
 		}
 	}
 
@@ -552,59 +681,3 @@
 		}
 	}
 </style>
-
-<script>
-	import Header from './components/Header.vue'
-	import SideBar from './components/SideBar.vue'
-	import Footer from './components/Footer.vue'
-
-	export default {
-		components: {
-			Header,
-			SideBar,
-			Footer
-		},
-		data() {
-			return {
-				query: {},
-				params: {},
-				hash: null,
-				routeName: null,
-				loading: true,
-				win: {
-					width: null,
-					height: null
-				}
-			};
-		},
-		methods: {
-			setLoading() {
-				setTimeout(() => this.loading = false, 700);
-			},
-			updateWinSize() {
-				this.win.width = this.getWinWidth();
-				this.win.height = this.getWinHeight();
-			},
-			initWin() {
-				this.updateWinSize();
-				window.addEventListener('resize', this.updateWinSize);
-			},
-			updateRouteParams() {
-				this.query = { ...this.$route.query };
-				this.params = { ...this.$route.params };
-				this.hash = this.$route.hash;
-				this.routeName = this.$route.name;
-			}
-		},
-		watch: {
-			$route() {
-				this.updateRouteParams();
-			}
-		},
-		mounted() {
-			this.initWin();
-			this.updateRouteParams();
-			window.onload = () => this.setLoading();
-		}
-	}
-</script>
