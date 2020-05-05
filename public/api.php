@@ -11,7 +11,7 @@ ini_set('display_errors', 1);
 
 date_default_timezone_set('UTC');
 
-define('ROOT', __DIR__);
+define('ROOT', dirname(__DIR__));
 define('DOMAIN', $_SERVER['HTTP_HOST']);
 
 require_once ROOT . '/include/fn.php';
