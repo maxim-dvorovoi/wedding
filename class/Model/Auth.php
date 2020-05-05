@@ -25,6 +25,7 @@ class Auth extends Model
             FROM workers
             WHERE email = '.$this->quote($email).'
             AND password = '.$this->quote($password).'
+            AND active = 1
         ';
         $res = mysqli_query($this->db, $query);
         $worker = $res ? mysqli_fetch_assoc($res) : [];
@@ -53,12 +54,37 @@ class Auth extends Model
         $this->checkReqParams(['token']);
 
         $params = $this->toArray($this->params);
-        $token = $params['token'] ?? '';
+        $token = $params['token'];
 
         $query = '
             SELECT id
             FROM workers
             WHERE hash = '.$this->quote($token).'
+            AND active = 1
+        ';
+        $res = mysqli_query($this->db, $query);
+        $worker = $res ? mysqli_fetch_assoc($res) : [];
+
+        if (empty($worker['id'])) {
+            $this->app->sendError(200, 'Auth error');
+        }
+
+        return true;
+    }
+
+    public function checkAdmin()
+    {
+        $this->checkReqParams(['token']);
+
+        $params = $this->toArray($this->params);
+        $token = $params['token'];
+
+        $query = '
+            SELECT id
+            FROM workers
+            WHERE hash = '.$this->quote($token).'
+            AND active = 1
+            AND admin = 1
         ';
         $res = mysqli_query($this->db, $query);
         $worker = $res ? mysqli_fetch_assoc($res) : [];

@@ -6,7 +6,10 @@ export default {
         return this.getCookie('token');
     },
     apiUrl() {
-        return 'http://localhost/projects/seo_dashboard/public/index.php/api';
-        //return 'http://seoadmin.zzz.com.ua/api.php';
+        if (process.env.NODE_ENV === 'development') {
+            return 'http://localhost/projects/seo_dashboard/public/api.php/call';
+        } else {
+            return 'https://seo-admin.herokuapp.com/api.php/call';
+        }
     }
 };

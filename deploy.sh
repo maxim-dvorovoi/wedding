@@ -10,8 +10,8 @@ npm run build
 cd dist
 
 git init
+heroku git:remote -a seo-admin
 git add -A
-git commit -m 'deploy'
-git push -u https://github.com/maxim-dvorovoi/vue_site_template.git master:gh-pages
+git push heroku master
 
 cd -

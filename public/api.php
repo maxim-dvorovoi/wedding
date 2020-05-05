@@ -1,6 +1,8 @@
 <?php
 
-header('Access-Control-Allow-Origin: http://localhost:8080');
+$allowOrigin = $_SERVER['HTTP_HOST'] === 'localhost' ? 'http://localhost:8080' : 'https://seo-admin.herokuapp.com';
+
+header('Access-Control-Allow-Origin: ' . $allowOrigin);
 header('Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization');
 

@@ -5,6 +5,14 @@ let methods = {
     setLoading(st) {
         this.app.contentLoading = st;
     },
+    checkToken() {
+        if (!this.token) {
+            this.$router.push({name: "login"});
+            return false;
+        }
+
+        return true;
+    },
     async checkAuth() {
         if (!this.token) {
             await this.$router.push({name: "login"});
@@ -17,6 +25,21 @@ let methods = {
                 await this.$router.push({name: "login"});
                 return false;
             }
+
+            return !!result.res;
+        } catch (e) {
+            return false;
+        }
+    },
+    async checkAdmin() {
+        if (!this.token) {
+            await this.$router.push({name: "login"});
+            return false;
+        }
+
+        try {
+            let result = await this.get('/auth/check-admin');
+            if (result && result.err) return false;
 
             return !!result.res;
         } catch (e) {
