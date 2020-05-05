@@ -418,12 +418,12 @@ class AutoChecks extends Model
         return true;
     }
 
-    public function robotChecker()
+    public function robotChecker($id = null, $table = null)
     {
         Auth::i()->checkAuth();
 
-        $id = $this->params['id'] ?? null;
-        $table = $this->params['table'] ?? null;
+        $id = $this->params['id'] ?? $id;
+        $table = $this->params['table'] ?? $table;
 
         if (!$table || $table === 'domains') $this->setAutoCheck($id, 'domains');
         if (!$table || $table === 'urls') $this->setAutoCheck($id, 'urls');
@@ -468,7 +468,7 @@ class AutoChecks extends Model
 
         $rows = [];
         foreach ($data as $row) {
-            if (!$id && $row['renew'] !== 0) continue;
+            if (!$id && $row['renew'] !== '0') continue;
 
             $row['checklist'] = [];
 

@@ -30,7 +30,7 @@ class App
 	{
 		$this->config = $this->getConfig();
 
-        $db = $_SERVER['HTTP_HOST'] === 'localhost' ? 'localDb' : 'db';
+        $db = DOMAIN === 'localhost' ? 'localDb' : 'db';
 
 		$cred = $this->config->$db;
 		$this->db = mysqli_connect($cred->host, $cred->user, $cred->pass, $cred->db);

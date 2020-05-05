@@ -21,17 +21,19 @@ class Model extends Singleton
 
 	public function __construct()
 	{
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $this->params = $_GET;
-        } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $content_type = strtolower($_SERVER['CONTENT_TYPE']);
-            if (strpos($content_type,'application/json') !== false) {
-                $this->params = json_decode(file_get_contents('php://input'), true);
+	    if (!$this->checkCli()) {
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $this->params = $_GET;
+            } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $content_type = strtolower($_SERVER['CONTENT_TYPE']);
+                if (strpos($content_type,'application/json') !== false) {
+                    $this->params = json_decode(file_get_contents('php://input'), true);
+                } else {
+                    $this->params = $_POST;
+                }
             } else {
-                $this->params = $_POST;
+                throw new HttpException(400, 'Method not available');
             }
-        } else {
-            throw new HttpException(400, 'Method not available');
         }
 
 		$this->app = App::getInstance();
@@ -54,6 +56,11 @@ class Model extends Singleton
     {
         if (!$data || is_array($data)) return $data;
         return (array)$data;
+    }
+
+    protected function checkCli()
+    {
+        return (PHP_SAPI === 'cli');
     }
 
     protected function escape($str)

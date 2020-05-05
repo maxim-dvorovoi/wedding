@@ -51,6 +51,8 @@ class Auth extends Model
 
     public function checkAuth()
     {
+        if ($this->checkCli()) return true;
+
         $this->checkReqParams(['token']);
 
         $params = $this->toArray($this->params);
@@ -74,6 +76,8 @@ class Auth extends Model
 
     public function checkAdmin()
     {
+        if ($this->checkCli()) return true;
+
         $this->checkReqParams(['token']);
 
         $params = $this->toArray($this->params);
