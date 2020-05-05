@@ -424,7 +424,7 @@ class AutoChecks extends Model
         return true;
     }
 
-    public function robotChecker($id = null, $table = null)
+    public function robotChecker($table = null, $id = null)
     {
         Auth::i()->checkAuth();
 
