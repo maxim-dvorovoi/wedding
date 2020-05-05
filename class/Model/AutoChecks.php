@@ -85,6 +85,9 @@ class AutoChecks extends Model
             foreach ($data as $item) {
                 $rows[$key]['statuses'][$item['checkName']] = $item;
             }
+
+            $rows[$key]['lastCheck'] = $this->changeTimezone($row['lastCheck']);
+            $rows[$key]['createdAt'] = $this->changeTimezone($row['createdAt']);
         }
 
         return ['rows' => $rows];
@@ -157,6 +160,9 @@ class AutoChecks extends Model
             foreach ($data as $item) {
                 $rows[$key]['statuses'][$item['checkName']] = $item;
             }
+
+            $rows[$key]['lastCheck'] = $this->changeTimezone($row['lastCheck']);
+            $rows[$key]['createdAt'] = $this->changeTimezone($row['createdAt']);
         }
 
         return ['rows' => $rows];

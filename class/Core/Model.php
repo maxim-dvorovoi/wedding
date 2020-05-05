@@ -63,6 +63,15 @@ class Model extends Singleton
         return (PHP_SAPI === 'cli');
     }
 
+    protected function changeTimezone($dateTime, $fromZone = 'UTC', $toZone = 'Europe/Kiev')
+    {
+        $dt = date_create($dateTime, timezone_open($fromZone));
+        date_timezone_set($dt, timezone_open($toZone));
+        $res = date_format($dt, 'Y-m-d H:i:s');
+
+        return $res;
+    }
+
     protected function escape($str)
     {
         return mysqli_real_escape_string($this->db, $str);
