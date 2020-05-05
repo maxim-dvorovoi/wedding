@@ -7,9 +7,9 @@ export default {
     },
     apiUrl() {
         if (process.env.NODE_ENV === 'development') {
-            return 'http://localhost/projects/seo_dashboard/public/api.php/call';
+            return 'http://localhost/projects/seo_dashboard/public/api.php';
         } else {
-            return 'https://seo-admin.herokuapp.com/api.php/call';
+            return 'https://seo-admin.herokuapp.com/api.php';
         }
     }
 };
