@@ -39,7 +39,7 @@
 				if (!this.email || !this.password) return this.error = true;
 
 				let data = await this.post('/auth/login', {email: this.email, password: this.password});
-				this.error = !data || data.err;
+				this.error = !data || data.err || !data.res;
 				if (this.error) return;
 
 				this.setCookie('token', data.res, {path: '', expires: 365 * 3});
