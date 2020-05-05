@@ -19,7 +19,7 @@ $routes = [
     ['GET', '/api.php/autochecks/robot/check-all', 'AutoChecks.robotChecker'],
 ];
 
-if ($_SERVER['HTTP_HOST'] !== 'localhost') return $routes;
+if (DOMAIN !== 'localhost') return $routes;
 
 foreach ($routes as $key => $route) {
     $routes[$key][1] = '/[*]'.$route[1];
