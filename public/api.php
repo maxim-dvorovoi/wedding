@@ -8,7 +8,7 @@ date_default_timezone_set('UTC');
 define('ROOT', dirname(__DIR__));
 define('DOMAIN', $_SERVER['HTTP_HOST']);
 
-$allowOrigin = DOMAIN === 'localhost' ? 'http://localhost:8080' : 'http://seo-admin.herokuapp.com https://seo-admin.herokuapp.com';
+$allowOrigin = DOMAIN === 'localhost' ? 'http://localhost:8080' : 'https://seo-admin.herokuapp.com';
 
 header('Access-Control-Allow-Origin: ' . $allowOrigin);
 header('Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT');
