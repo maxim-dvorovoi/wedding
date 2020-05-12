@@ -58,8 +58,10 @@
 	.login-form {
 		max-width: 400px;
 		margin: 50px auto;
-		border: 1px solid #bcbcbc;
+		padding: 20px 10px;
+		border: 1px solid #dcdcdc;
 		border-radius: 10px;
+		box-shadow: 0 15px 35px rgba(0,0,0,.1), 0 5px 15px rgba(0,0,0,.3);
 	}
 
 	.login-form > div {
