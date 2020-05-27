@@ -1,19 +1,13 @@
 <template>
-    <div class="header">
+    <div class="header" :class="[{'with-bg': withBg}]">
         <div class="content-center">
-            <router-link :to="app.routeName === 'login' ? '/login' : '/'">
+            <router-link to="/" @click.native="scrollToTag('home')">
                 <div class="logo">
-                    <div class="custom-logo">
-                        <div class="font25">
-                            SEO
-                            <i class="font20 fas fa-sort-amount-up-alt"></i>
-                        </div>
-                        <div class="font25">Admin</div>
-                    </div>
+                    <div class="custom-logo">M & A</div>
                 </div>
             </router-link>
 
-            <div class="routes" v-if="app.routeName !== 'login'">
+            <div class="routes">
                 <svg
                     @click="$store.state.sideBar = !$store.state.sideBar"
                     :class="'burger' + ($store.state.sideBar ? ' active' : '')"
@@ -33,17 +27,15 @@
                     />
                 </svg>
                 <span>
-                    <router-link to="/" :class="[{'active': app.routeName === 'home'}]">
-                        Home
+                    <router-link to="/" @click.native="scrollToTag('aboutUs')">
+                        О нас
                     </router-link>
-                </span>
-                <span>
-                    <router-link to="/auto-checker" :class="[{'active': app.routeName === 'autoChecker'}]">
-                        Auto checker
+                    <router-link to="/" @click.native="scrollToTag('program')">
+                        Программа
                     </router-link>
-                </span>
-                <span>
-                    <router-link to="/login">Logout</router-link>
+                    <router-link to="/" @click.native="scrollToTag('photo')">
+                        Фото
+                    </router-link>
                 </span>
             </div>
         </div>
@@ -54,19 +46,30 @@
     .header {
         position: sticky;
         top: 0;
-        background-color: white;
+        background-color: transparent;
         height: 80px;
         line-height: 80px;
-        -webkit-box-shadow: 0px -2px 10px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px -2px 10px 0px rgba(0,0,0,0.75);
-        box-shadow: 0px -2px 10px 0px rgba(0,0,0,0.75);
         z-index: 1000;
+        transition: background-color .7s, box-shadow .7s;
+    }
+
+    .header.with-bg {
+        background-color: white;
+        -webkit-box-shadow: 0 -2px 10px 0 rgba(0,0,0,0.3);
+        -moz-box-shadow: 0 -2px 10px 0 rgba(0,0,0,0.3);
+        box-shadow: 0 -2px 10px 0 rgba(0,0,0,0.3);
     }
 
     .logo {
         display: inline-block;
         font-size: 30px;
-        color: rgba(54,99,86,1);
+        color: rgb(228, 161, 152);
+    }
+
+    .custom-logo {
+        font-family: 'Tangerine', cursive;
+        font-weight: 700;
+        font-size: 40px;
     }
 
     .routes {
@@ -80,16 +83,17 @@
     .routes > span > a {
         padding: 3px;
         margin-left: 5px;
-        color: black;
+        color: rgb(228, 161, 152);
         transition: .3s;
+        font-size: 25px;
     }
 
     .routes > span > a:hover {
-        box-shadow: inset 0 -2px 0 0 rgba(54,99,86,1);
+        box-shadow: inset 0 -1px 0 0 rgb(228, 161, 152);
     }
 
     .routes a.active {
-        box-shadow: inset 0 -2px 0 0 rgba(54,99,86,1);
+        box-shadow: inset 0 -1px 0 0 rgb(228, 161, 152);
     }
 
     .burger {
@@ -109,7 +113,7 @@
     .line {
         fill: none;
         transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-        stroke: rgba(54,99,86,1);
+        stroke: rgb(228, 161, 152);
         stroke-width: 5.5;
         stroke-linecap: round;
     }
@@ -130,20 +134,6 @@
         stroke-dashoffset: -102px;
     }
 
-    .custom-logo {
-        padding: 15px 0;
-    }
-
-    .custom-logo div {
-        font-size: 25px;
-        line-height: 25px;
-    }
-
-    .custom-logo i {
-        font-size: 20px;
-        line-height: 20px;
-    }
-
     @media (max-width: 1024px) {
         .header {
             height: 60px;
@@ -157,25 +147,24 @@
         .routes > span {
             display: none;
         }
-
-        .custom-logo {
-            padding: 10px 0;
-        }
-
-        .custom-logo div {
-            font-size: 20px;
-            line-height: 20px;
-        }
-
-        .custom-logo i {
-            font-size: 16px;
-            line-height: 16px;
-        }
     }
 </style>
 
 <script>
     export default {
-        name: 'Header'
+        name: 'Header',
+        data() {
+            return {
+                withBg: false,
+            }
+        },
+        methods: {
+            onScroll() {
+                this.withBg = this.scrollTop() > 30;
+            }
+        },
+        async mounted() {
+            window.addEventListener('scroll', this.onScroll)
+        }
     }
 </script>

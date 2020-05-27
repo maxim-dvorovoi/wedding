@@ -100,15 +100,13 @@
 
 <style>
 	#app {
-		position: absolute;
-		top: 0;
 		width: 100%;
 		height: 100%;
 		background-color: white;
 	}
 
 	* {
-		font-family: 'Poppins', sans-serif;
+		font-family: 'Cormorant Infant', serif;
 	}
 
 	html {
@@ -136,7 +134,7 @@
 	}
 
 	a {
-		color: #305a4e;
+		color: rgb(228, 161, 152);
 		text-decoration: none;
 	}
 
@@ -300,7 +298,7 @@
 
 	.link {
 		cursor: pointer;
-		color: #3e7162;
+		color: rgb(228, 161, 152);
 	}
 
 	.fade-enter-active, .fade-leave-active {
@@ -334,7 +332,7 @@
 	}
 
 	input:focus, textarea:focus {
-		border-color: #3e7162;
+		border-color: rgb(228, 161, 152);
 		outline: none ;
 	}
 
@@ -430,7 +428,7 @@
 		padding: 0;
 		color: white;
 		font-weight: 500;
-		background: #3e7162;
+		background: rgb(228, 161, 152);
 		z-index: 1;
 		text-align: start;
 	}
@@ -480,7 +478,7 @@
 		margin-top: -110px;
 		margin-left: -110px;
 		border-radius: 2px;
-		color: #477e6e;
+		color: #bd5e62;
 	}
 
 	.dot-1 {
@@ -490,7 +488,7 @@
 		height: 30px;
 		top: 95px;
 		left: 95px;
-		background-color: #477e6e;
+		background-color: #bd5e62;
 		border-radius: 50%;
 		-webkit-animation-fill-mode: both;
 		animation-fill-mode: both;
@@ -505,7 +503,7 @@
 		height: 60px;
 		top: 80px;
 		left: 80px;
-		background-color: #477e6e;
+		background-color: #bd5e62;
 		border-radius: 50%;
 		-webkit-animation-fill-mode: both;
 		animation-fill-mode: both;
@@ -520,7 +518,7 @@
 		height: 90px;
 		top: 65px;
 		left: 65px;
-		background-color: #477e6e;
+		background-color: #bd5e62;
 		border-radius: 50%;
 		-webkit-animation-fill-mode: both;
 		animation-fill-mode: both;

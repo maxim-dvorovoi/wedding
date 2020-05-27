@@ -6,7 +6,9 @@
                     <a href="https://ua.linkedin.com/in/maxim-dvorovoi" target="_blank">© 2020 Maxim Dvorovoi</a>
                 </div>
                 <div>
-                    <router-link :to="app.routeName === 'login' ? '/login' : '/'">SEO Admin</router-link>
+                    <router-link to="/" @click.native="scrollToTag('home')">
+                        <div class="custom-logo">M & A</div>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -22,17 +24,24 @@
 <style scoped>
     .footer {
         color: white;
+        font-size: 18px;
         font-weight: 300;
         flex: 0 0 auto;
-        background-color: rgba(54,99,86,1);
-        height: 60px;
+        background-color: #4d6989;
+        height: 80px;
     }
 
     .flex-between {
         display: flex;
         justify-content: space-between;
-        height: 60px;
+        height: 80px;
         align-items: center;
+    }
+
+    .custom-logo {
+        font-family: 'Tangerine', cursive;
+        font-weight: 700;
+        font-size: 20px;
     }
 
     a {

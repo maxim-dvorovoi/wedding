@@ -1,50 +1,8 @@
-import axios from 'axios';
 import Cookies from 'js-cookie';
 
 let methods = {
     setLoading(st) {
         this.app.contentLoading = st;
-    },
-    checkToken() {
-        if (!this.token) {
-            this.$router.push({name: "login"});
-            return false;
-        }
-
-        return true;
-    },
-    async checkAuth() {
-        if (!this.token) {
-            await this.$router.push({name: "login"});
-            return false;
-        }
-
-        try {
-            let result = await this.get('/auth/check-auth');
-            if (result && result.err) {
-                await this.$router.push({name: "login"});
-                return false;
-            }
-
-            return !!result.res;
-        } catch (e) {
-            return false;
-        }
-    },
-    async checkAdmin() {
-        if (!this.token) {
-            await this.$router.push({name: "login"});
-            return false;
-        }
-
-        try {
-            let result = await this.get('/auth/check-admin');
-            if (result && result.err) return false;
-
-            return !!result.res;
-        } catch (e) {
-            return false;
-        }
     },
     getCookie(key) {
         return Cookies.get(key);
@@ -54,22 +12,6 @@ let methods = {
     },
     removeCookie(key, params = {}) {
         return Cookies.remove(key, params);
-    },
-    async get(endPoint, params = {}) {
-        let token = this.token || '';
-        params = {...params, token};
-        let res = await axios.get(this.apiUrl + endPoint, {params});
-        if (!res) return null;
-
-        return res.data;
-    },
-    async post(endPoint, params = {}) {
-        let token = this.token || '';
-        params = {...params, token};
-        let res = await axios.post(this.apiUrl + endPoint, params);
-        if (!res) return null;
-
-        return res.data;
     },
     refreshQuery(opts = {}) {
         let query = this.app.query;
@@ -245,6 +187,77 @@ let methods = {
     },
     scrollTop() {
         return window.scrollY != null ? window.scrollY : window.pageYOffset;
+    },
+    animate(options) {
+        let start = performance.now();
+
+        requestAnimationFrame(function animate(time) {
+            let timeFraction = (time - start) / options.duration;
+            if (timeFraction > 1) timeFraction = 1;
+
+            let progress = options.timing(timeFraction);
+            options.draw(progress);
+
+            if (timeFraction < 1) requestAnimationFrame(animate);
+        });
+    },
+    makeEaseInOut(timing) {
+        return (timeFraction) => {
+            if (timeFraction < .5) return timing(2 * timeFraction) / 2;
+
+            return (2 - timing(2 * (1 - timeFraction))) / 2;
+        }
+    },
+    quad(timeFraction) {
+        return Math.pow(timeFraction, 2);
+    },
+    scrollToTag(id) {
+        this.disableScroll();
+        let clientY = this.scrollTop();
+        let tagY = document.getElementById(id).offsetTop - 10;
+        if (window.innerWidth > 962) tagY = tagY - 40;
+
+        this.animate({
+            duration: 1000,
+            timing: this.makeEaseInOut(this.quad),
+            draw: (progress) => {
+                window.scrollTo({top: clientY - (clientY - tagY) * progress});
+                if (progress === 1) this.enableScroll();
+            }
+        });
+    },
+    disableScroll() {
+        document.addEventListener('DOMMouseScroll', this.preventDefault, false);
+        document.addEventListener('wheel', this.preventDefault, {passive: false});
+        document.addEventListener('mousewheel', this.preventDefault, {passive: false});
+        document.addEventListener('onmousewheel', this.preventDefault, {passive: false});
+        document.addEventListener('MozMousePixelScroll', this.preventDefault, {passive: false});
+
+        document.addEventListener('onkeydown', this.preventDefaultForScrollKeys, {passive: false});
+        document.addEventListener('touchmove', this.preventDefault, {passive: false});
+    },
+    enableScroll() {
+        document.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+        document.removeEventListener('wheel', this.preventDefault, {passive: false});
+        document.removeEventListener('mousewheel', this.preventDefault, {passive: false});
+        document.removeEventListener('onmousewheel', this.preventDefault, {passive: false});
+        document.removeEventListener('MozMousePixelScroll', this.preventDefault, {passive: false});
+
+        document.removeEventListener('onkeydown', this.preventDefaultForScrollKeys, {passive: false});
+        document.removeEventListener('touchmove', this.preventDefault, {passive: false});
+    },
+    preventDefault(e) {
+        e = e || window.event;
+        if (e.preventDefault) e.preventDefault();
+
+        e.returnValue = false;
+    },
+    preventDefaultForScrollKeys(e) {
+        let keys = {37: 1, 38: 1, 39: 1, 40: 1};
+        if (!keys[e.keyCode]) return;
+
+        this.preventDefault(e);
+        return false;
     }
 };
 

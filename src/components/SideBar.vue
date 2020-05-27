@@ -1,14 +1,17 @@
 <template>
     <div class="sidebar">
-        <div class="routes" v-if="app.routeName !== 'login'">
-            <router-link to="/" :class="[{'active': app.routeName === 'home'}]" @click.native="$store.commit('showHideSideBar')">
-                <div>Home</div>
+        <div class="routes">
+            <router-link to="/" @click.native="scrollTo('home')">
+                <div>Главная</div>
             </router-link>
-            <router-link to="/auto-checker" :class="[{'active': app.routeName === 'autoChecker'}]" @click.native="$store.commit('showHideSideBar')">
-                <div>Auto checker</div>
+            <router-link to="/" @click.native="scrollTo('aboutUs')">
+                <div>О нас</div>
             </router-link>
-            <router-link to="/login" @click.native="$store.commit('showHideSideBar')">
-                <div>Logout</div>
+            <router-link to="/" @click.native="scrollTo('program')">
+                <div>Программа</div>
+            </router-link>
+            <router-link to="/" @click.native="scrollTo('photo')">
+                <div>Фото</div>
             </router-link>
         </div>
     </div>
@@ -16,7 +19,17 @@
 
 <script>
     export default {
-        name: "SideBar"
+        name: "SideBar",
+        data() {
+            return {
+            }
+        },
+        methods: {
+            scrollTo(id) {
+                this.$store.state.sideBar = !this.$store.state.sideBar
+                this.scrollToTag(id);
+            }
+        }
     }
 </script>
 
@@ -31,14 +44,15 @@
         display: flex;
         flex-direction: column;
         text-align: start;
-        background-color: #305a4e;
+        background-color: #e8afa6;
         color: white;
-        box-shadow: inset 10px 0 26px -16px rgba(28,28,28,1);
+        box-shadow: inset 10px 0 26px -16px rgba(28,28,28,0.4);
+        font-size: 24px;
     }
 
     .routes > a > div{
         padding-left: 20px;
-        box-shadow: inset 0 -1px 0 0 rgba(42,76,66,1);
+        box-shadow: inset 0 -1px 0 0 rgb(241, 199, 193);
         transition: .3s;
     }
 
