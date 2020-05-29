@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar">
+    <div class="sidebar" v-mousedown-outside="outsideClick" id="sidebar">
         <div class="routes">
             <router-link to="/" @click.native="scrollTo('home')">
                 <div>Главная</div>
@@ -26,8 +26,12 @@
         },
         methods: {
             scrollTo(id) {
-                this.$store.state.sideBar = !this.$store.state.sideBar
+                this.showHideSideBar();
                 this.scrollToTag(id);
+            },
+            outsideClick(e) {
+                if (!this.$store.state.sideBar || e.toElement.tagName === 'path' || e.toElement.tagName === 'svg') return;
+                this.showHideSideBar();
             }
         }
     }
@@ -35,7 +39,7 @@
 
 <style scoped>
     .sidebar {
-        position: fixed;
+        position: absolute;
         top: 0;
         right: 0;
         height: 100vh;
@@ -48,6 +52,9 @@
         color: white;
         box-shadow: inset 10px 0 26px -16px rgba(28,28,28,0.4);
         font-size: 24px;
+        transform: translateX(0);
+        transition: transform .4s ease-in-out;
+        will-change: transform;
     }
 
     .routes > a > div{

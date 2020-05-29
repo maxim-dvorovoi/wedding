@@ -188,76 +188,30 @@ let methods = {
     scrollTop() {
         return window.scrollY != null ? window.scrollY : window.pageYOffset;
     },
-    animate(options) {
-        let start = performance.now();
-
-        requestAnimationFrame(function animate(time) {
-            let timeFraction = (time - start) / options.duration;
-            if (timeFraction > 1) timeFraction = 1;
-
-            let progress = options.timing(timeFraction);
-            options.draw(progress);
-
-            if (timeFraction < 1) requestAnimationFrame(animate);
-        });
-    },
-    makeEaseInOut(timing) {
-        return (timeFraction) => {
-            if (timeFraction < .5) return timing(2 * timeFraction) / 2;
-
-            return (2 - timing(2 * (1 - timeFraction))) / 2;
-        }
-    },
-    quad(timeFraction) {
-        return Math.pow(timeFraction, 2);
-    },
     scrollToTag(id) {
-        this.disableScroll();
         let clientY = this.scrollTop();
-        let tagY = document.getElementById(id).offsetTop - 10;
-        if (window.innerWidth > 962) tagY = tagY - 40;
+        let tagY = document.getElementById(id).offsetTop - 59;
+        if (window.innerWidth > 1024) tagY = tagY - 20;
 
-        this.animate({
-            duration: 1000,
-            timing: this.makeEaseInOut(this.quad),
-            draw: (progress) => {
-                window.scrollTo({top: clientY - (clientY - tagY) * progress});
-                if (progress === 1) this.enableScroll();
-            }
-        });
+        window.scrollTo({top: clientY - (clientY - tagY), behavior: "smooth"});
     },
-    disableScroll() {
-        document.addEventListener('DOMMouseScroll', this.preventDefault, false);
-        document.addEventListener('wheel', this.preventDefault, {passive: false});
-        document.addEventListener('mousewheel', this.preventDefault, {passive: false});
-        document.addEventListener('onmousewheel', this.preventDefault, {passive: false});
-        document.addEventListener('MozMousePixelScroll', this.preventDefault, {passive: false});
+    showHideSideBar() {
+        let sidebar = document.getElementById('sidebar');
+        this.$store.state.sideBar = !this.$store.state.sideBar;
 
-        document.addEventListener('onkeydown', this.preventDefaultForScrollKeys, {passive: false});
-        document.addEventListener('touchmove', this.preventDefault, {passive: false});
-    },
-    enableScroll() {
-        document.removeEventListener('DOMMouseScroll', this.preventDefault, false);
-        document.removeEventListener('wheel', this.preventDefault, {passive: false});
-        document.removeEventListener('mousewheel', this.preventDefault, {passive: false});
-        document.removeEventListener('onmousewheel', this.preventDefault, {passive: false});
-        document.removeEventListener('MozMousePixelScroll', this.preventDefault, {passive: false});
-
-        document.removeEventListener('onkeydown', this.preventDefaultForScrollKeys, {passive: false});
-        document.removeEventListener('touchmove', this.preventDefault, {passive: false});
-    },
-    preventDefault(e) {
-        e = e || window.event;
-        if (e.preventDefault) e.preventDefault();
-
-        e.returnValue = false;
-    },
-    preventDefaultForScrollKeys(e) {
-        let keys = {37: 1, 38: 1, 39: 1, 40: 1};
-        if (!keys[e.keyCode]) return;
-
-        this.preventDefault(e);
-        return false;
+        if (this.$store.state.sideBar) {
+            sidebar.style.top = this.scrollTop() + 'px';
+            document.body.style.top = '-' + this.scrollTop() + 'px';
+            document.body.style.position = 'fixed';
+            document.body.style.transform = 'translateX(-250px)';
+            sidebar.style.transform = 'translateX(250px)';
+        } else {
+            let top = Math.abs(+document.body.style.top.slice(0, -2));
+            document.body.style.position = '';
+            window.scrollTo({top});
+            document.body.style.transform = 'translateX(0px)';
+            sidebar.style.transform = 'translateX(0px)';
+        }
     }
 };
 

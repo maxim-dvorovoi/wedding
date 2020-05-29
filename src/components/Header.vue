@@ -9,7 +9,7 @@
 
             <div class="routes">
                 <svg
-                    @click="$store.state.sideBar = !$store.state.sideBar"
+                    @click="showHideSideBar()"
                     :class="'burger' + ($store.state.sideBar ? ' active' : '')"
                     viewBox="0 0 100 100" width="45"
                 >
@@ -50,7 +50,7 @@
         height: 80px;
         line-height: 80px;
         z-index: 1000;
-        transition: background-color .7s, box-shadow .7s;
+        transition: background-color .5s, box-shadow .5s;
     }
 
     .header.with-bg {
@@ -160,6 +160,10 @@
         },
         methods: {
             onScroll() {
+                if (document.body.style.top && document.body.style.position) {
+                    return this.withBg = true;
+                }
+
                 this.withBg = this.scrollTop() > 30;
             }
         },

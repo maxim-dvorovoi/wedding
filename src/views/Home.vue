@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div class="general-banner" id="home">
-			<img src="/IMG_6995.jpeg">
+			<img src="../assets/min/IMG_6995.jpg">
 		</div>
 		<div class="days-to-wedding">
 			<div>
@@ -70,29 +70,15 @@
 				<h4>12:00 ул. Европейская, 27А г. Вишневое</h4>
 				<div class="line-small"></div>
 				<h5>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vivamus feugiat purus sed tempus ornare.
-					Sed convallis eu orci ut sodales.
-					Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vivamus feugiat purus sed tempus ornare.
-					Sed convallis eu orci ut sodales.
-					Nam rhoncus laoreet elit, a condimentum augue tempor.
+					ЗАГС города Вишневое расположен в центре города. Он очень аккуратный, просторный и красивый. В торжественном зале проведения свадебной церемонии присутствует большое количество цветов и зеркал.
 				</h5>
 			</div>
 			<div class="bg-blue">
 				<h2>Ресторан "Верховина"</h2>
-				<h4>15:30 ул. Петропавловская, 24 Киевская обл.</h4>
+				<h4>16:00 ул. Петропавловская, 24 Софиевская Борщаговка</h4>
 				<div class="line-small"></div>
 				<h5>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vivamus feugiat purus sed tempus ornare.
-					Sed convallis eu orci ut sodales.
-					Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vivamus feugiat purus sed tempus ornare.
-					Sed convallis eu orci ut sodales.
-					Nam rhoncus laoreet elit, a condimentum augue tempor.
+					Загородный ресторан «Верховина» - идеальное место для проведения торжественных мероприятий на высшем уровне. Торжественные банкетные залы на любой вкус, изысканная кухня, приветливый персонал. Меню состоит из украинско-европейской кухни. Ресторан располагается на Окружной, на самой окраине столицы.
 				</h5>
 			</div>
 			<div></div>
@@ -102,30 +88,22 @@
 			<h3 class="text-center">20 ИЮНЯ 2020</h3>
 			<div class="timeline">
 				<div class="event">
-					<div class="time">11:30</div>
+					<div class="time">12:00</div>
 					<h2>Свадебная церемония</h2>
 					<p>
-						Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus feugiat purus sed tempus ornare.
-						Sed convallis eu orci ut sodales.
-						Nam rhoncus laoreet elit, a condimentum augue tempor.
+						Это один из прекраснейших свадебных обрядов, которые несут в себе всю неотъемлемую ценность всего свадебного действия. Церемония будет происходить в ЗАГС г. Вишновое.
 					</p>
 				</div>
 				<div class="event">
-					<div class="time">11:30</div>
+					<div class="time">13:00</div>
 					<h2>Фотосессия</h2>
 					<p>
-						Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus feugiat purus sed tempus ornare.
-						Sed convallis eu orci ut sodales.
-						Nam rhoncus laoreet elit, a condimentum augue tempor.
+						Это запечатление эмоций и воспоминаний на всю жизнь. Фотосессия будет длится около 2 часов.
 					</p>
 				</div>
 				<div class="event">
-					<div class="time">11:30</div>
-					<h2>Ресторан</h2>
+					<div class="time">16:00</div>
+					<h2>Сбор в ресторане</h2>
 					<p>
 						Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -135,7 +113,7 @@
 					</p>
 				</div>
 				<div class="event">
-					<div class="time">11:30</div>
+					<div class="time">16:30</div>
 					<h2>Время праздновать</h2>
 					<p>
 						Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
@@ -173,43 +151,14 @@
 			<div></div>
 			<div></div>
 		</div>
+		<div class="quote text-center">
+			<h1>"Лучший подарок - ваше участие, спасибо вам"</h1>
+			<div class="custom-logo">M & A</div>
+		</div>
 	</div>
 </template>
 
 <style scoped>
-	.timeline {
-		position: relative;
-		max-width: 600px;
-		margin: 0 auto;
-		padding: 0 30px;
-	}
-
-	.timeline:before {
-		content: "";
-		position: absolute;
-		width: 1px;
-		background-color: #ddd;
-		height: 100%;
-	}
-
-	.timeline .event {
-		position: relative;
-		margin: 30px 30px 30px 70px;
-	}
-
-	.timeline .event .time {
-		background-color: #bd5e62;
-		color: white;
-		font-size: 20px;
-		position: absolute;
-		width: 60px;
-		text-align: center;
-		padding: 7px;
-		border-radius: 10px;
-		top: 5px;
-		left: -105px;
-	}
-
 	.general-banner {
 		display: flex;
 		align-items: center;
@@ -225,6 +174,27 @@
 		margin: 0 auto;
 		height: 95vh;
 		object-fit: cover;
+		animation: 2s ease-in-out 0s alternate show_banner;
+	}
+
+	@keyframes show_banner {
+		0% {
+			opacity: .5;
+			transform: scale(0.8);
+		}
+
+		70% {
+			opacity: 1;
+			transform: scale(1.02);
+		}
+
+		90% {
+			transform: scale(0.99);
+		}
+
+		100% {
+			transform: scale(1);
+		}
 	}
 
 	.days-to-wedding {
@@ -234,6 +204,7 @@
 		background-color: #94b1d2;
 		color: white;
 		text-align: center;
+		overflow: hidden;
 	}
 
 	.days-to-wedding > div {
@@ -263,17 +234,19 @@
 		color: black;
 	}
 
-	.parallax-banner:before {
+	.parallax-banner::after {
 		content: ' ';
-		position: fixed;
+		position: absolute;
 		width: 100%;
 		height: 100%;
 		top: 0;
 		left: 0;
-		background: url('/drew-coffman-llWjwo200fo-unsplash.jpg') no-repeat fixed;
+		background-image: url('../assets/min/drew-coffman-llWjwo200fo-unsplash.jpg');
+		background-attachment: fixed;
+		background-repeat: no-repeat;
 		background-size: cover;
 		z-index: -1;
-		filter: blur(4px) opacity(0.9);
+		filter: blur(5px);
 	}
 
 	.parallax-banner > div {
@@ -292,16 +265,20 @@
 		width: 100%;
 		height: 450px;
 		margin: 0 auto;
-		filter: opacity(0.95);
 	}
 
 	.parallax-banner > div:first-child .img {
-		background: url('/IMG_20180427_155820.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_20180427_155820.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 	}
 
 	.parallax-banner > div:last-child .img {
-		background: url('/00100sPORTRAIT_00100_BURST20190427124526871_COVER.jpg') no-repeat center;
+		background-image: url('../assets/min/photo_2020-05-27_23-31-54_1.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-position-y: 10%;
 		background-size: cover;
 	}
 
@@ -328,12 +305,12 @@
 	}
 
 	.grid-2x2 > div:first-child {
-		background: url('/josh-felise-jjj1rHyYyG0-unsplash.jpg') no-repeat center;
+		background: url('../assets/min/josh-felise-jjj1rHyYyG0-unsplash.jpg') no-repeat center;
 		background-size: cover;
 	}
 
 	.grid-2x2 > div:last-child {
-		background: url('/w752_h506_crop.jpg') no-repeat center;
+		background: url('../assets/min/w752_h506_crop.jpg') no-repeat center;
 		background-size: cover;
 		filter: opacity(.8);
 	}
@@ -375,10 +352,47 @@
 		background: white;
 	}
 
+	.timeline {
+		position: relative;
+		max-width: 600px;
+		margin: 0 auto;
+		padding-left: 30px;
+	}
+
+	.timeline:before {
+		content: "";
+		position: absolute;
+		width: 1px;
+		background-color: #ddd;
+		height: 100%;
+	}
+
+	.timeline .event {
+		position: relative;
+		margin: 30px 0 30px 70px;
+	}
+
+	.timeline .event .time {
+		background-color: #bd5e62;
+		color: white;
+		font-size: 20px;
+		position: absolute;
+		width: 60px;
+		text-align: center;
+		padding: 7px;
+		border-radius: 10px;
+		top: 5px;
+		left: -105px;
+	}
+
+	.timeline .event p {
+		font-size: 20px;
+	}
+
 	.photos {
 		display: flex;
 		justify-content: space-between;
-		background: dimgrey;
+		background: #2b2b2b;
 		flex-wrap: wrap;
 	}
 
@@ -408,46 +422,75 @@
 
 	.photos > div:nth-child(1) {
 		display: table;
-		background-color: dimgrey;
 	}
 
 	.photos > div:nth-child(2) {
-		background: url('/IMG_0025.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_0025.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 		background-position-y: 35%;
 	}
 
 	.photos > div:nth-child(3) {
-		background: url('/IMG_20180812_192719.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_20180812_192719.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 		background-position-x: 80%;
 	}
 
 	.photos > div:nth-child(4) {
-		background: url('/IMG_20191214_163604.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_20191214_163604.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 		background-position-y: 40%;
 	}
 
 	.photos > div:nth-child(5) {
-		background: url('/IMG_20180909_185356_1.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_20180909_185356_1.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 	}
 
 	.photos > div:nth-child(6) {
-		background: url('/IMG_20190427_124938.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_20190427_124938.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 	}
 
 	.photos > div:nth-child(7) {
-		background: url('/IMG_20190409_214547.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_20190409_214547.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 	}
 
 	.photos > div:nth-child(8) {
-		background: url('/IMG_20180618_143818_2.jpg') no-repeat center;
+		background-image: url('../assets/min/IMG_20180618_143818_2.jpg');
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: cover;
 		background-position-x: 65%;
+	}
+
+	.quote {
+		padding: 60px 20px;
+		background: #516e90;
+		color: white;
+	}
+
+	.quote h1 {
+		color: white;
+	}
+
+	.quote .custom-logo {
+		font-family: 'Tangerine', cursive;
+		font-weight: 700;
+		font-size: 25px;
 	}
 
 	@media (max-width: 1024px) {
@@ -469,6 +512,11 @@
 	}
 
 	@media (max-width: 700px) {
+		.parallax-banner::after {
+			background-attachment: unset;
+			filter: blur(15px);
+		}
+
 		.grid-2x2 > div {
 			width: 100%;
 		}
@@ -538,7 +586,7 @@ export default {
 	methods: {
 		calcWeddingDate() {
 			let today = new Date();
-			let wedding = new Date(2020, 5, 20, 11, 30);
+			let wedding = new Date(2020, 5, 20, 12);
 			let diff = Math.floor((wedding.getTime() - today.getTime()) / 1000);
 
 			if (diff < 0) {

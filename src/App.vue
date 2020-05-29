@@ -7,7 +7,7 @@
 		</div>
 
 		<div id="index" :class="loading ? 'main' : 'main-active'">
-			<div class="side" :class="[{'active': $store.state.sideBar}]" ref="side">
+			<div class="side" ref="side">
 				<Header/>
 				<div class="content" id="content">
 					<transition name="fade">
@@ -61,26 +61,13 @@
 			},
 			initWin() {
 				this.updateWinSize();
-				window.addEventListener('resize', this.updateWinSize);
+				//window.addEventListener('resize', this.updateWinSize);
 			},
 			updateRouteParams() {
 				this.query = { ...this.$route.query };
 				this.params = { ...this.$route.params };
 				this.hash = this.$route.hash;
 				this.routeName = this.$route.name;
-			},
-			onPanelScroll() {
-				this.scrollBtnShown = this.scrollTop() > 100;
-
-				let OFFSET = 50;
-				let scrollBottom = this.scrollTop() + window.innerHeight;
-				let docHeight = this.$refs.side.scrollHeight || document.body.scrollHeight;
-
-				if (scrollBottom > docHeight - OFFSET) {
-					if (this.$refs.appView && this.$refs.appView.onScrollToBottom) {
-						this.$refs.appView.onScrollToBottom();
-					}
-				}
 			},
 		},
 		watch: {
@@ -93,7 +80,6 @@
 			this.updateRouteParams();
 
 			window.onload = this.setPageLoading;
-			window.addEventListener('scroll', this.onPanelScroll);
 		}
 	}
 </script>
@@ -111,13 +97,19 @@
 
 	html {
 		height: 100%;
+		text-rendering: optimizeLegibility;
 	}
 
 	body {
 		margin: 0;
+		width: 100%;
 		height: 100%;
 		background-color: white;
 		-webkit-tap-highlight-color: transparent;
+		transform: translateX(0);
+		transition: transform .4s ease-in-out;
+		will-change: transform;
+		overflow-x: hidden;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
