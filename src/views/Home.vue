@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div class="general-banner" id="home">
-			<img src="../assets/min/IMG_6995.jpg">
+			<img src="../assets/min/IMG_6995.jpg" alt="Свадьба">
 		</div>
 		<div class="days-to-wedding">
 			<div>
@@ -11,7 +11,7 @@
 					<span>Вместе</span>
 				</template>
 				<template v-else>
-					Осталось дней до
+					Осталось до
 					<br>
 					<span>Нашей свадьбы</span>
 				</template>
@@ -39,88 +39,30 @@
 		</div>
 		<div class="parallax-banner" id="aboutUs">
 			<div>
-				<div class="img"></div>
+				<div class="img">
+					<img src="../assets/min/IMG_20180427_155820.jpg" alt="Максим Дворовой">
+				</div>
 				<div class="text">
 					<h3 class="display-3">Максим Дворовой</h3>
 					ЖЕНИХ<br>
 					<i class="fas fa-chess-king"></i>
 					<br>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat purus sed tempus ornare. Sed convallis eu orci ut sodales. Nam rhoncus laoreet elit, a conimentum augue tempor itae in faucibus cura
+						С первой нашей встречи я понял, какая она необыкновенная. Прошло уже столько времени, а это чувство не покидает меня и по сей день. А ведь для счастья многого не надо. Всего лишь любимый человек рядом.
 					</p>
 				</div>
 			</div>
 			<div>
-				<div class="img"></div>
+				<div class="img">
+					<img src="../assets/min/photo_2020-05-27_23-31-54_1.jpg" alt="Анастасия Снида">
+				</div>
 				<div class="text">
 					<h3 class="display-3">Анастасия Снида</h3>
 					НЕВЕСТА<br>
 					<i class="fas fa-chess-queen"></i>
 					<br>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat purus sed tempus ornare. Sed convallis eu orci ut sodales. Nam rhoncus laoreet elit, a conimentum augue tempor itae in faucibus cura
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="grid-2x2" id="place">
-			<div></div>
-			<div class="bg-red">
-				<h2>ЗАГС Вишневое</h2>
-				<h4>12:00 ул. Европейская, 27А г. Вишневое</h4>
-				<div class="line-small"></div>
-				<h5>
-					ЗАГС города Вишневое расположен в центре города. Он очень аккуратный, просторный и красивый. В торжественном зале проведения свадебной церемонии присутствует большое количество цветов и зеркал.
-				</h5>
-			</div>
-			<div class="bg-blue">
-				<h2>Ресторан "Верховина"</h2>
-				<h4>16:00 ул. Петропавловская, 24 Софиевская Борщаговка</h4>
-				<div class="line-small"></div>
-				<h5>
-					Загородный ресторан «Верховина» - идеальное место для проведения торжественных мероприятий на высшем уровне. Торжественные банкетные залы на любой вкус, изысканная кухня, приветливый персонал. Меню состоит из украинско-европейской кухни. Ресторан располагается на Окружной, на самой окраине столицы.
-				</h5>
-			</div>
-			<div></div>
-		</div>
-		<div class="program" id="program">
-			<h1 class="text-center">ПРОГРАММА ДНЯ</h1>
-			<h3 class="text-center">20 ИЮНЯ 2020</h3>
-			<div class="timeline">
-				<div class="event">
-					<div class="time">12:00</div>
-					<h2>Свадебная церемония</h2>
-					<p>
-						Это один из прекраснейших свадебных обрядов, которые несут в себе всю неотъемлемую ценность всего свадебного действия. Церемония будет происходить в ЗАГС г. Вишновое.
-					</p>
-				</div>
-				<div class="event">
-					<div class="time">13:00</div>
-					<h2>Фотосессия</h2>
-					<p>
-						Это запечатление эмоций и воспоминаний на всю жизнь. Фотосессия будет длится около 2 часов.
-					</p>
-				</div>
-				<div class="event">
-					<div class="time">16:00</div>
-					<h2>Сбор в ресторане</h2>
-					<p>
-						Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus feugiat purus sed tempus ornare.
-						Sed convallis eu orci ut sodales.
-						Nam rhoncus laoreet elit, a condimentum augue tempor.
-					</p>
-				</div>
-				<div class="event">
-					<div class="time">16:30</div>
-					<h2>Время праздновать</h2>
-					<p>
-						Nam rhoncus laoreet elit, a condimentum augue tempor vitae in faucibus cura.
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus feugiat purus sed tempus ornare.
-						Sed convallis eu orci ut sodales.
-						Nam rhoncus laoreet elit, a condimentum augue tempor.
+						С первой нашей встречи каждый мой день наполнен счастьем. Мое внутренее ощущение говорит мне что Максим точно мой человек. С ним я счастлива и чувствую себя любимой. Он изменил мою жизнь.
 					</p>
 				</div>
 			</div>
@@ -143,17 +85,89 @@
 					</h4>
 				</div>
 			</div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+			<div>
+				<img src="../assets/min/IMG_0025.jpg">
+			</div>
+			<div>
+				<img src="../assets/min/IMG_20180812_192719.jpg">
+			</div>
+			<div>
+				<img src="../assets/min/IMG_20191214_163604.jpg">
+			</div>
+			<div>
+				<img src="../assets/min/IMG_20180909_185356_1.jpg">
+			</div>
+			<div>
+				<img src="../assets/min/IMG_20190427_124938.jpg">
+			</div>
+			<div>
+				<img src="../assets/min/IMG_20190409_214547.jpg">
+			</div>
+			<div>
+				<img src="../assets/min/IMG_20180618_143818_2.jpg">
+			</div>
 		</div>
+		<div class="program" id="program">
+			<h1 class="text-center">ПРОГРАММА ДНЯ</h1>
+			<h3 class="text-center">20 ИЮНЯ 2020</h3>
+			<div class="timeline">
+				<div class="event">
+					<div class="time">12:00</div>
+					<h2>Свадебная церемония</h2>
+					<p>
+						Это один из прекраснейших свадебных обрядов, которые несут в себе всю неотъемлемую ценность всего свадебного действия. Церемония будет происходить в ЗАГС г. Вишновое.
+					</p>
+				</div>
+				<div class="event">
+					<div class="time">13:00</div>
+					<h2>Фотосессия</h2>
+					<p>
+						Все желающие могут присоединится к сьемке и запечатлить эти эмоции на всю жизнь. Фотосессия будет длится около 2 часов.
+					</p>
+				</div>
+				<div class="event">
+					<div class="time">15:30</div>
+					<h2>Сбор в ресторане</h2>
+					<p>
+						Собираем всех гостей на наш праздник, знакомимся с ведущим. Вас ждёт шампанское и приятная музыка.
+					</p>
+				</div>
+				<div class="event">
+					<div class="time">16:00</div>
+					<h2>Время праздновать</h2>
+					<p>
+						Начало банкета и веселья. Отрываемся по полной)
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="place" id="place">
+			<div>
+				<img src="../assets/min/josh-felise-jjj1rHyYyG0-unsplash.jpg" alt="ЗАГС Вишневое">
+			</div>
+			<div class="bg-red">
+				<h2>ЗАГС Вишневое</h2>
+				<h4>12:00 ул. Европейская, 27А г. Вишневое</h4>
+				<div class="line-small"></div>
+				<h5>
+					ЗАГС города Вишневое расположен в центре города. Он очень аккуратный, просторный и красивый. В торжественном зале проведения свадебной церемонии присутствует большое количество цветов и зеркал.
+				</h5>
+			</div>
+			<div class="bg-blue">
+				<h2>Ресторан "Верховина"</h2>
+				<h4>15:30 ул. Петропавловская, 24 Софиевская Борщаговка</h4>
+				<div class="line-small"></div>
+				<h5>
+					Загородный ресторан «Верховина» - идеальное место для проведения торжественных мероприятий на высшем уровне. Торжественные банкетные залы на любой вкус, изысканная кухня, приветливый персонал. Меню состоит из украинско-европейской кухни. Ресторан располагается на Окружной, на самой окраине столицы.
+				</h5>
+			</div>
+			<div>
+				<img src="../assets/min/w752_h506_crop.jpg" alt="Ресторан 'Верховина'">
+			</div>
+		</div>
+		<div id="mapid"></div>
 		<div class="quote text-center">
-			<h1>"Лучший подарок - ваше участие, спасибо вам"</h1>
-			<div class="custom-logo">M & A</div>
+			<h1>Лучший подарок - ваше участие, спасибо вам</h1>
 		</div>
 	</div>
 </template>
@@ -262,24 +276,25 @@
 	}
 
 	.parallax-banner > div .img {
+		position: relative;
+		overflow: hidden;
 		width: 100%;
 		height: 450px;
 		margin: 0 auto;
 	}
 
-	.parallax-banner > div:first-child .img {
-		background-image: url('../assets/min/IMG_20180427_155820.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
+	.parallax-banner > div:first-child .img img {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: -90px;
 	}
 
-	.parallax-banner > div:last-child .img {
-		background-image: url('../assets/min/photo_2020-05-27_23-31-54_1.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-position-y: 10%;
-		background-size: cover;
+	.parallax-banner > div:last-child .img img {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: -10px;
 	}
 
 	.parallax-banner > div .text h3 {
@@ -291,60 +306,81 @@
 		margin: 15px 0;
 	}
 
-	.grid-2x2 {
+	.photos {
 		display: flex;
 		justify-content: space-between;
+		background: #2b2b2b;
 		flex-wrap: wrap;
-		background: white;
 	}
 
-	.grid-2x2 > div {
-		width: calc(50% - 80px);
-		min-height: 300px;
-		padding: 40px;
+	.photos > div {
+		width: 25%;
+		height: calc(100vw / 4);
+		position: relative;
+		overflow: hidden;
 	}
 
-	.grid-2x2 > div:first-child {
-		background: url('../assets/min/josh-felise-jjj1rHyYyG0-unsplash.jpg') no-repeat center;
-		background-size: cover;
+	.photos > div > div {
+		display: table-cell;
+		vertical-align: middle;
 	}
 
-	.grid-2x2 > div:last-child {
-		background: url('../assets/min/w752_h506_crop.jpg') no-repeat center;
-		background-size: cover;
-		filter: opacity(.8);
-	}
-
-	.grid-2x2 > div .line-small {
-		background-color: white;
-		height: 2px;
-		width: 40px;
-		margin-bottom: 20px;
-	}
-
-	.grid-2x2 > div > h2 {
-		margin: 0;
+	.photos > div > div h2, .photos > div > div h4 {
+		margin: 7px;
 		color: white;
 	}
 
-	.grid-2x2 > div > h4 {
-		margin: 15px 0 20px 0;
+	.photos > div > div a {
 		color: white;
+		transition: .5s;
 	}
 
-	.grid-2x2 > div > h5 {
-		margin: 15px 0 20px 0;
-		color: white;
+	.photos > div > div a:hover {
+		opacity: .7;
 	}
 
-	.grid-2x2 .bg-red {
-		background: #bd5e62;
-		color: white;
+	.photos > div > img {
+		position: absolute;
 	}
 
-	.grid-2x2 .bg-blue {
-		background: #4d6989;
-		color: white;
+	.photos > div:nth-child(1) {
+		display: table;
+	}
+
+	.photos > div:nth-child(2) img {
+		width: 100%;
+		top: -35px;
+		left: 0;
+	}
+
+	.photos > div:nth-child(3) img {
+		height: 100%;
+		left: -30%;
+	}
+
+	.photos > div:nth-child(4) img {
+		width: 100%;
+		top: -18%;
+	}
+
+	.photos > div:nth-child(5) img {
+		height: 100%;
+		left: -20%;
+	}
+
+	.photos > div:nth-child(6) img {
+		height: 100%;
+		left: -20%;
+	}
+
+	.photos > div:nth-child(7) img {
+		height: 100%;
+		left: -10%;
+	}
+
+	.photos > div:nth-child(8) img {
+		height: 100%;
+		left: -20%;
 	}
 
 	.program {
@@ -389,92 +425,65 @@
 		font-size: 20px;
 	}
 
-	.photos {
+	.place {
 		display: flex;
 		justify-content: space-between;
-		background: #2b2b2b;
 		flex-wrap: wrap;
+		background: white;
 	}
 
-	.photos > div {
-		width: 25%;
-		height: calc(100vw / 4);
+	.place > div:nth-child(1), .place > div:nth-child(4) {
+		width: 50%;
+		min-height: 300px;
+		overflow: hidden;
 	}
 
-	.photos > div > div {
-		display: table-cell;
-		vertical-align: middle;
+	.place > div:nth-child(2), .place > div:nth-child(3) {
+		width: calc(50% - 80px);
+		min-height: 300px;
+		padding: 40px;
 	}
 
-	.photos > div > div h2, .photos > div > div h4 {
-		margin: 10px;
+	.place > div:nth-child(4) {
+		filter: opacity(.8);
+	}
+
+	.place > div:first-child img, .place > div:last-child img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+
+	.place > div .line-small {
+		background-color: white;
+		height: 2px;
+		width: 40px;
+		margin-bottom: 20px;
+	}
+
+	.place > div > h2 {
+		margin: 0;
 		color: white;
 	}
 
-	.photos > div > div a {
+	.place > div > h4 {
+		margin: 15px 0 20px 0;
 		color: white;
-		transition: .5s;
 	}
 
-	.photos > div > div a:hover {
-		opacity: .7;
+	.place > div > h5 {
+		margin: 15px 0 20px 0;
+		color: white;
 	}
 
-	.photos > div:nth-child(1) {
-		display: table;
+	.place .bg-red {
+		background: #bd5e62;
+		color: white;
 	}
 
-	.photos > div:nth-child(2) {
-		background-image: url('../assets/min/IMG_0025.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-		background-position-y: 35%;
-	}
-
-	.photos > div:nth-child(3) {
-		background-image: url('../assets/min/IMG_20180812_192719.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-		background-position-x: 80%;
-	}
-
-	.photos > div:nth-child(4) {
-		background-image: url('../assets/min/IMG_20191214_163604.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-		background-position-y: 40%;
-	}
-
-	.photos > div:nth-child(5) {
-		background-image: url('../assets/min/IMG_20180909_185356_1.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-	}
-
-	.photos > div:nth-child(6) {
-		background-image: url('../assets/min/IMG_20190427_124938.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-	}
-
-	.photos > div:nth-child(7) {
-		background-image: url('../assets/min/IMG_20190409_214547.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-	}
-
-	.photos > div:nth-child(8) {
-		background-image: url('../assets/min/IMG_20180618_143818_2.jpg');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-		background-position-x: 65%;
+	.place .bg-blue {
+		background: #4d6989;
+		color: white;
 	}
 
 	.quote {
@@ -487,10 +496,8 @@
 		color: white;
 	}
 
-	.quote .custom-logo {
-		font-family: 'Tangerine', cursive;
-		font-weight: 700;
-		font-size: 25px;
+	#mapid {
+		height: 400px;
 	}
 
 	@media (max-width: 1024px) {
@@ -506,7 +513,7 @@
 			height: 70vh;
 		}
 
-		.days-to-wedding > div[data-v-fae5bece]:first-child {
+		.days-to-wedding > div:first-child {
 			display: none;
 		}
 	}
@@ -517,29 +524,29 @@
 			filter: blur(15px);
 		}
 
-		.grid-2x2 > div {
-			width: 100%;
-		}
-
-		.grid-2x2 > div:nth-child(1) {
-			order:1;
-		}
-
-		.grid-2x2 > div:nth-child(2) {
-			order:2;
-		}
-
-		.grid-2x2 > div:nth-child(3) {
-			order:4;
-		}
-
-		.grid-2x2 > div:nth-child(4) {
-			order:3;
-		}
-
 		.photos > div {
 			width: 50%;
 			height: calc(100vw / 2);
+		}
+
+		.place > div {
+			width: 100% !important;
+		}
+
+		.place > div:nth-child(1) {
+			order:1;
+		}
+
+		.place > div:nth-child(2) {
+			order:2;
+		}
+
+		.place > div:nth-child(3) {
+			order:4;
+		}
+
+		.place > div:nth-child(4) {
+			order:3;
 		}
 	}
 
@@ -548,7 +555,8 @@
 			flex-direction: column;
 		}
 
-		.days-to-wedding > div[data-v-fae5bece]:first-child {
+		.days-to-wedding > div:first-child {
+			border-right: unset;
 			display: block;
 		}
 
@@ -576,6 +584,7 @@ export default {
 	name: 'home',
 	data() {
 		return {
+			map: null,
 			afterWedding: false,
 			daysLeft: '00',
 			hoursLeft: '00',
@@ -608,10 +617,28 @@ export default {
 
 			diff = diff - this.minuteLeft * oneMinute;
 			this.secondsLeft = Math.floor(diff);
+		},
+		initMap() {
+			this.mymap = L.map('mapid').setView([50.4255677, 30.3695225], 12);
+			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+				maxZoom: 18,
+				minZoom: 4,
+				id: 'mapbox/streets-v11',
+				tileSize: 512,
+				zoomOffset: -1,
+				accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+			}).addTo(this.mymap);
+
+			let restaurant = L.marker([50.4439034,30.3564596]).addTo(this.mymap);
+			restaurant.bindPopup("<div style='text-align: center; font-size: 16px'>Ресторан</div>");
+
+			let weeding = L.marker([50.3920556, 30.3731424]).addTo(this.mymap);
+			weeding.bindPopup("<div style='text-align: center; font-size: 16px'>ЗАГС</div>");
 		}
 	},
 	async mounted() {
 		setInterval(this.calcWeddingDate, 1000);
+		this.initMap();
 	}
 }
 </script>

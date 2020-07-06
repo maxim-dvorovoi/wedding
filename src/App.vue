@@ -7,7 +7,7 @@
 		</div>
 
 		<div id="index" :class="loading ? 'main' : 'main-active'">
-			<div class="side" ref="side">
+			<div class="side" :class="[{'active': $store.state.sideBar}]" ref="side">
 				<Header/>
 				<div class="content" id="content">
 					<transition name="fade">
@@ -61,7 +61,7 @@
 			},
 			initWin() {
 				this.updateWinSize();
-				//window.addEventListener('resize', this.updateWinSize);
+				window.addEventListener('resize', this.updateWinSize);
 			},
 			updateRouteParams() {
 				this.query = { ...this.$route.query };
@@ -104,11 +104,8 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
-		background-color: white;
+		background-color: #e8afa6;
 		-webkit-tap-highlight-color: transparent;
-		transform: translateX(0);
-		transition: transform .4s ease-in-out;
-		will-change: transform;
 		overflow-x: hidden;
 	}
 
@@ -263,6 +260,7 @@
 		transform: translateX(0px);
 		z-index: 1;
 		position: relative;
+		will-change: transform;
 	}
 
 	.content-center {
@@ -634,21 +632,21 @@
 	}
 
 	::-webkit-scrollbar-track {
-		background-color: transparent;
+		background-color: #fff;
 		border: 0 none #fff;
 		border-radius: 5px;
 	}
 
 	::-webkit-scrollbar-track:hover {
-		background-color: transparent;
+		background-color: #fff;
 	}
 
 	::-webkit-scrollbar-track:active {
-		background-color: transparent;
+		background-color: #fff;
 	}
 
 	::-webkit-scrollbar-corner {
-		background-color: transparent;
+		background-color: #fff;
 	}
 
 	@media (max-width: 1024px) {

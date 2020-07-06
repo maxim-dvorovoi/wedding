@@ -33,8 +33,8 @@
                     <router-link to="/" @click.native="scrollToTag('program')">
                         Программа
                     </router-link>
-                    <router-link to="/" @click.native="scrollToTag('photo')">
-                        Фото
+                    <router-link to="/" @click.native="scrollToTag('place')">
+                        Место проведения
                     </router-link>
                 </span>
             </div>
@@ -49,7 +49,7 @@
         background-color: transparent;
         height: 80px;
         line-height: 80px;
-        z-index: 1000;
+        z-index: 2000;
         transition: background-color .5s, box-shadow .5s;
     }
 
@@ -160,6 +160,7 @@
         },
         methods: {
             onScroll() {
+                if (this.$store.state.sideBar) return;
                 if (document.body.style.top && document.body.style.position) {
                     return this.withBg = true;
                 }

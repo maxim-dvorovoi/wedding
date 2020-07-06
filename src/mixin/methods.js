@@ -190,28 +190,14 @@ let methods = {
     },
     scrollToTag(id) {
         let clientY = this.scrollTop();
-        let tagY = document.getElementById(id).offsetTop - 59;
-        if (window.innerWidth > 1024) tagY = tagY - 20;
+        let positionY = document.getElementById(id).offsetTop - 59;
+        if (window.innerWidth > 1024) positionY = positionY - 20;
 
-        window.scrollTo({top: clientY - (clientY - tagY), behavior: "smooth"});
+        window.scrollTo({top: clientY - (clientY - positionY), behavior: "smooth"});
     },
     showHideSideBar() {
-        let sidebar = document.getElementById('sidebar');
         this.$store.state.sideBar = !this.$store.state.sideBar;
-
-        if (this.$store.state.sideBar) {
-            sidebar.style.top = this.scrollTop() + 'px';
-            document.body.style.top = '-' + this.scrollTop() + 'px';
-            document.body.style.position = 'fixed';
-            document.body.style.transform = 'translateX(-250px)';
-            sidebar.style.transform = 'translateX(250px)';
-        } else {
-            let top = Math.abs(+document.body.style.top.slice(0, -2));
-            document.body.style.position = '';
-            window.scrollTo({top});
-            document.body.style.transform = 'translateX(0px)';
-            sidebar.style.transform = 'translateX(0px)';
-        }
+        document.body.style.overflowY = this.$store.state.sideBar ? 'hidden' : 'auto';
     }
 };
 
