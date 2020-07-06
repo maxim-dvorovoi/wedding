@@ -46,11 +46,30 @@
     .header {
         position: sticky;
         top: 0;
-        background-color: transparent;
         height: 80px;
         line-height: 80px;
         z-index: 2000;
         transition: background-color .5s, box-shadow .5s;
+        -webkit-box-shadow: inset 0 50px 55px -35px rgba(0,0,0,0.75);
+        -moz-box-shadow: inset 0 50px 55px -35px rgba(0,0,0,0.75);
+        box-shadow: inset 0 50px 55px -35px rgba(0,0,0,0.75);
+    }
+
+    .header a {
+        color: #fff;
+        text-shadow: 1px 1px #000;
+    }
+
+    .header .line {
+        stroke: #fff;
+    }
+
+    .header .routes > span > a:hover {
+        box-shadow: inset 0 -1px 0 0 #fff;
+    }
+
+    .header .routes a.active {
+        box-shadow: inset 0 -1px 0 0 #fff;
     }
 
     .header.with-bg {
@@ -60,10 +79,26 @@
         box-shadow: 0 -2px 10px 0 rgba(0,0,0,0.3);
     }
 
+    .header.with-bg a {
+        color: #bd5e62;
+        text-shadow: 1px 1px transparent;
+    }
+
+    .header.with-bg .line {
+        stroke: #bd5e62;
+    }
+
+    .header.with-bg .routes > span > a:hover {
+        box-shadow: inset 0 -1px 0 0 #bd5e62;
+    }
+
+    .header.with-bg .routes a.active {
+        box-shadow: inset 0 -1px 0 0 #bd5e62;
+    }
+
     .logo {
         display: inline-block;
         font-size: 30px;
-        color: rgb(228, 161, 152);
     }
 
     .custom-logo {
@@ -83,17 +118,8 @@
     .routes > span > a {
         padding: 3px;
         margin-left: 5px;
-        color: rgb(228, 161, 152);
         transition: .3s;
         font-size: 25px;
-    }
-
-    .routes > span > a:hover {
-        box-shadow: inset 0 -1px 0 0 rgb(228, 161, 152);
-    }
-
-    .routes a.active {
-        box-shadow: inset 0 -1px 0 0 rgb(228, 161, 152);
     }
 
     .burger {
@@ -113,7 +139,6 @@
     .line {
         fill: none;
         transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-        stroke: rgb(228, 161, 152);
         stroke-width: 5.5;
         stroke-linecap: round;
     }

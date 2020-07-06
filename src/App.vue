@@ -104,7 +104,6 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
-		background-color: #e8afa6;
 		-webkit-tap-highlight-color: transparent;
 		overflow-x: hidden;
 	}

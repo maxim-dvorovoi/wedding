@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div class="general-banner" id="home">
-			<img src="../assets/min/IMG_6995.jpg" alt="Свадьба">
+			<img src="../assets/IMG_1089.jpg" alt="Свадьба">
 		</div>
 		<div class="days-to-wedding">
 			<div>
@@ -40,7 +40,7 @@
 		<div class="parallax-banner" id="aboutUs">
 			<div>
 				<div class="img">
-					<img src="../assets/min/IMG_20180427_155820.jpg" alt="Максим Дворовой">
+					<img src="../assets/IMG_0455.jpg" alt="Максим Дворовой">
 				</div>
 				<div class="text">
 					<h3 class="display-3">Максим Дворовой</h3>
@@ -54,7 +54,7 @@
 			</div>
 			<div>
 				<div class="img">
-					<img src="../assets/min/photo_2020-05-27_23-31-54_1.jpg" alt="Анастасия Снида">
+					<img src="../assets/IMG_0467.jpg" alt="Анастасия Снида">
 				</div>
 				<div class="text">
 					<h3 class="display-3">Анастасия Снида</h3>
@@ -178,7 +178,6 @@
 		align-items: center;
 		justify-content: center;
 		margin-top: -80px;
-		background-color: #fdf3f1;
 		overflow: hidden;
 		height: 100vh;
 	}
@@ -186,37 +185,17 @@
 	.general-banner img {
 		display: block;
 		margin: 0 auto;
-		height: 95vh;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
-		animation: 2s ease-in-out 0s alternate show_banner;
-	}
-
-	@keyframes show_banner {
-		0% {
-			opacity: .5;
-			transform: scale(0.8);
-		}
-
-		70% {
-			opacity: 1;
-			transform: scale(1.02);
-		}
-
-		90% {
-			transform: scale(0.99);
-		}
-
-		100% {
-			transform: scale(1);
-		}
+		object-position: 30% 50%;
 	}
 
 	.days-to-wedding {
 		display: flex;
 		justify-content: space-between;
 		font-size: 35px;
-		background-color: #94b1d2;
-		color: white;
+		color: black;
 		text-align: center;
 		overflow: hidden;
 	}
@@ -230,11 +209,8 @@
 	}
 
 	.days-to-wedding > div:first-child {
+		color: #bd5e62;
 		border-right: 1px solid white;
-	}
-
-	.days-to-wedding > div:first-child > span {
-		font-weight: 700;
 	}
 
 	.parallax-banner {
@@ -255,12 +231,12 @@
 		height: 100%;
 		top: 0;
 		left: 0;
-		background-image: url('../assets/min/drew-coffman-llWjwo200fo-unsplash.jpg');
+		background-image: url('../assets/IMG_0832.jpg');
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-size: cover;
 		z-index: -1;
-		filter: blur(5px);
+		filter: blur(3px);
 	}
 
 	.parallax-banner > div {
@@ -508,11 +484,6 @@
 	}
 
 	@media (max-width: 900px) {
-		.general-banner img {
-			width: 70vh;
-			height: 70vh;
-		}
-
 		.days-to-wedding > div:first-child {
 			display: none;
 		}
